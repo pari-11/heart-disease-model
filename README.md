@@ -66,7 +66,8 @@ pandas
 
 numpy
 ```
-###Author
-Parnika Thakur
-Student engineer focused on building functional, logic-driven projects.
-Comfortable across the full stack — from models to UI, backend to deployment.
+### Author
+Parnika Thakur  
+Student engineer focused on building functional, logic-driven projects.  
+Comfortable across the full stack — from models to UI, backend to deployment.  
+Linkedin: www.linkedin.com/in/parnikathakur  
