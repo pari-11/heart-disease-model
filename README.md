@@ -7,17 +7,17 @@ This project is a machine learning–powered web application that predicts the r
 ## 📂 Project Structure
 
 heart-disease-model/
-├── app.py                   # Flask backend to serve predictions
-├── model.pkl                # Trained machine learning model
-├── model_training.ipynb     # Jupyter Notebook used for training and evaluation
-├── requirements.txt         # Python dependencies for the project
-
-├── Templates/               # HTML templates used by Flask
-│   └── index.html           # Main user interface form
-
-├── static/                  # Static assets (images, CSS, JS)
-│   └── bg4.jpg              # Background image for the web app
-│   └── bg2.jpg              # Background image for the web app
+├── app.py                   # Flask backend to serve predictions  
+├── model.pkl                # Trained machine learning model  
+├── model_training.ipynb     # Jupyter Notebook used for training and evaluation  
+├── requirements.txt         # Python dependencies for the project  
+  
+├── Templates/               # HTML templates used by Flask  
+│   └── index.html           # Main user interface form  
+  
+├── static/                  # Static assets (images, CSS, JS)  
+│   └── bg4.jpg              # Background image for the web app  
+│   └── bg2.jpg              # Background image for the web app  
 
 yaml
 Copy
@@ -69,4 +69,8 @@ scikit-learn
 pandas
 
 numpy
-
+```
+###Author
+Parnika Thakur
+Student engineer focused on building functional, logic-driven projects.
+Comfortable across the full stack — from models to UI, backend to deployment.
