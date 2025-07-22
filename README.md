@@ -6,13 +6,18 @@ This project is a machine learning–powered web application that predicts the r
 
 ## 📂 Project Structure
 
-.
-├── model_training.ipynb # Jupyter Notebook used for training the ML model
-├── app.py # Flask application code
-├── model.pkl # Trained ML model saved using pickle
-├── requirements.txt # List of Python packages required to run the project
-├── Templates/
-│ └── index.html # Frontend form for user input
+heart-disease-model/
+├── app.py                   # Flask backend to serve predictions
+├── model.pkl                # Trained machine learning model
+├── model_training.ipynb     # Jupyter Notebook used for training and evaluation
+├── requirements.txt         # Python dependencies for the project
+
+├── Templates/               # HTML templates used by Flask
+│   └── index.html           # Main user interface form
+
+├── static/                  # Static assets (images, CSS, JS)
+│   └── bg4.jpg              # Background image for the web app
+│   └── bg2.jpg              # Background image for the web app
 
 yaml
 Copy
