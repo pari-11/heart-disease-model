@@ -6,7 +6,7 @@ This project is a machine learning–powered web application that predicts the r
 
 ## 📂 Project Structure
 
-heart-disease-model/
+heart-disease-model/  
 ├── app.py                   # Flask backend to serve predictions  
 ├── model.pkl                # Trained machine learning model  
 ├── model_training.ipynb     # Jupyter Notebook used for training and evaluation  
@@ -18,10 +18,6 @@ heart-disease-model/
 ├── static/                  # Static assets (images, CSS, JS)  
 │   └── bg4.jpg              # Background image for the web app  
 │   └── bg2.jpg              # Background image for the web app  
-
-yaml
-Copy
-Edit
 
 ---
 
