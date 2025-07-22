@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical Risk Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+        /* Background image */
+        background-image: url('/static/images/bg4.jpg'); /* Replace this with your own image URL */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+
+        /* Optional overlay for better contrast */
+        position: relative;
+      }
+
+      /* Optional overlay layer for slight dimming */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.151); /* dark overlay */
+        z-index: -1;
+      }
+
+      .container {
+        max-width: 500px;
+        margin-top: 50px;
+        background-color: #fff;
+        padding: 30px;
+        border: 2px solid rgb(243, 193, 222);
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(135deg, #fffefe, #3d0978, #ec667c, #d75585);
+    background-size: 400% 400%;
+    animation: gradientShift 4s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+      
+      h1 {
+        color: #ffffff;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+      .form-label {
+        font-weight: bold;
+        color: #6a5bac;
+      }
+      .form-control {
+        border-radius: 8px;
+        padding: 12px;
+      }
+      .form-control:focus {
+        border-color: #80bdff;
+        box-shadow: 0 0 0 0.2rem rgba(255, 99, 195, 0.42);
+      }
+      .btn-primary {
+        padding: 10px 0;
+        font-size: 1.2rem;
+        background-color: #560e84;
+        border: none;
+        border-radius: 8px;
+      }
+      .btn-primary:hover {
+        background-color: #cc127f;
+      }
+      .alert-success {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center mb-3">Heart Disease Risk Prediction</h1>
+
+      {% if result %}
+      <div class="alert alert-success text-center" role="alert">
+        {{ result }}
+      </div>
+      {% endif %}
+
+      <form method="post" action="/predict" class="bg-light p-4 rounded shadow-sm">
+
+        <div class="mb-3">
+          <label for="age" class="form-label">Age</label>
+          <input type="text" class="form-control" id="age" name="age" placeholder="Enter age" />
+        </div>
+
+        <div class="mb-3">
+          <label for="anaemia" class="form-label">Anaemia (0 or 1)</label>
+          <input type="text" class="form-control" id="anaemia" name="anaemia" placeholder="1 = Yes, 0 = No" />
+        </div>
+
+        <div class="mb-3">
+          <label for="creatinine_phosphokinase" class="form-label">Creatinine Phosphokinase</label>
+          <input type="text" class="form-control" id="creatinine_phosphokinase" name="creatinine_phosphokinase" placeholder="e.g. 582" />
+        </div>
+
+        <div class="mb-3">
+          <label for="diabetes" class="form-label">Diabetes (0 or 1)</label>
+          <input type="text" class="form-control" id="diabetes" name="diabetes" placeholder="1 = Yes, 0 = No" />
+        </div>
+
+        <div class="mb-3">
+          <label for="ejection_fraction" class="form-label">Ejection Fraction</label>
+          <input type="text" class="form-control" id="ejection_fraction" name="ejection_fraction" placeholder="e.g. 38" />
+        </div>
+
+        <div class="mb-3">
+          <label for="high_blood_pressure" class="form-label">High Blood Pressure (0 or 1)</label>
+          <input type="text" class="form-control" id="high_blood_pressure" name="high_blood_pressure" placeholder="1 = Yes, 0 = No" />
+        </div>
+
+        <div class="mb-3">
+          <label for="platelets" class="form-label">Platelets Count</label>
+          <input type="text" class="form-control" id="platelets" name="platelets" placeholder="e.g. 250000" />
+        </div>
+
+        <div class="mb-3">
+          <label for="serum_creatinine" class="form-label">Serum Creatinine</label>
+          <input type="text" class="form-control" id="serum_creatinine" name="serum_creatinine" placeholder="e.g. 1.9" />
+        </div>
+
+        <div class="mb-3">
+          <label for="serum_sodium" class="form-label">Serum Sodium</label>
+          <input type="text" class="form-control" id="serum_sodium" name="serum_sodium" placeholder="e.g. 130" />
+        </div>
+
+        <div class="mb-3">
+          <label for="sex" class="form-label">Sex (0 = Female, 1 = Male)</label>
+          <input type="text" class="form-control" id="sex" name="sex" placeholder="0 = Female, 1 = Male" />
+        </div>
+
+        <div class="mb-3">
+          <label for="smoking" class="form-label">Smoking (0 or 1)</label>
+          <input type="text" class="form-control" id="smoking" name="smoking" placeholder="1 = Yes, 0 = No" />
+        </div>
+
+        <div class="mb-3">
+          <label for="time" class="form-label">Follow-up Time (in days)</label>
+          <input type="text" class="form-control" id="time" name="time" placeholder="e.g. 120" />
+        </div>
+
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
